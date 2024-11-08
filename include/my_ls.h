@@ -6,9 +6,7 @@
 */
 #ifndef MY_LS_H
     #define MY_LS_H
-    #include <unistd.h>
-    #include <stdlib.h>
-    #include <stdio.h>
+    #include "my.h"
 
 typedef struct {
     int show_all;       // -a
@@ -17,5 +15,9 @@ typedef struct {
 } ls_options_t;
 
 // custom functions prototype
+int my_ls_basic(const char *dir_name);
+void display_directory_entries(DIR *dir);
+
+
 
 #endif /* MY_LS_H */

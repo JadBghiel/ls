@@ -4,31 +4,37 @@
 ** File description:
 ** recreate the ls command
 */
-#include <stdio.h>
-#include "my_ls.h"
+#include "../include/my.h"
+#include "../include/my_ls.h"
 
-int main(int argc, char **argv)
+void display_directory_entries(DIR *dir)
 {
+    struct dirent *entry;
 
+    entry = readdir(dir);
+    while (entry != NULL) {
+    if (entry->d_name[0] != '.') {
+        my_putstr(entry->d_name);
+        my_putchar('\n');
+    }
+    entry = readdir(dir);
+    }
 }
 
-void check_arguments()
+int my_ls_basic(const char *dir_name)
 {
+    DIR *dir;
+    struct dirent *entry;
 
+    dir = opendir(dir_name);
+    if (dir == NULL) {
+        perror("opendir");
+        return 84;
+    }
+    display_directory_entries(dir);
+    if (closedir(dir) == -1) {
+        perror("closedir");
+        return EXIT_FAILURE;
+    }
+    return 0;
 }
-
-void set_option_flag()
-{
-// based on the argument, corresponds the arg and the struct var
-}
-
-int is_directory()
-{
-// check its a dir
-}
-
-void process_directory()
-{
-
-}
-
