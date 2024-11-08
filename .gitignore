@@ -1,0 +1,6 @@
+*.log
+*.out
+*.swp
+temp/
+main.c
+*.a
