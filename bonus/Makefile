@@ -12,7 +12,7 @@ SRC = src/my_ls.c \
 
 OBJ = $(SRC:.c=.o)
 
-NAME = info_file
+NAME = my_ls
 
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ)
