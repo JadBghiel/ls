@@ -10,7 +10,8 @@ CC = gcc
 SRC = ../src/my_ls.c \
 	../src/main.c \
 	../src/my_putchar.c \
-	../src/my_putstr.c
+	../src/my_putstr.c \
+	../src/flags.c
 
 OBJ = $(SRC:.c=.o)
 

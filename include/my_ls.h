@@ -15,8 +15,15 @@ typedef struct {
 } ls_options_t;
 
 // custom functions prototype
-int my_ls_basic(const char *dir_name);
-void display_directory_entries(DIR *dir);
+int my_ls_basic(const char *dir_name, int show_hidden, int show_dir);
+int display_entry(const struct dirent *entry, int show_hidden, int show_dir);
+void display_dir_entries(DIR *dir, int show_hidden, int show_dir);
+void handle_a_flag(int *show_hidden);
+void handle_d_flag(int *show_dir);
+int is_dir(const char *path);
+
+
+
 
 
 

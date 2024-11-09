@@ -7,21 +7,30 @@
 #include "../include/my.h"
 #include "../include/my_ls.h"
 
-void display_directory_entries(DIR *dir)
+int display_entry(const struct dirent *entry, int show_hidden, int show_dir)
 {
-    struct dirent *entry;
-
-    entry = readdir(dir);
-    while (entry != NULL) {
-    if (entry->d_name[0] != '.') {
-        my_putstr(entry->d_name);
-        my_putchar('\n');
+    if (show_hidden || entry->d_name[0] != '.') {
+        if (!show_dir || is_dir(entry->d_name)) {
+            return 1;
+        }
     }
-    entry = readdir(dir);
+    return 0;
+}
+
+void display_dir_entries(DIR *dir, int show_hidden, int show_dir)
+{
+    struct dirent *entry = readdir(dir);
+
+    while (entry != NULL) {
+        if (display_entry(entry, show_hidden, show_dir)) {
+            my_putstr(entry->d_name);
+            my_putchar('\n');
+        }
+        entry = readdir(dir);
     }
 }
 
-int my_ls_basic(const char *dir_name)
+int my_ls_basic(const char *dir_name, int show_hidden, int show_dir)
 {
     DIR *dir;
     struct dirent *entry;
@@ -31,10 +40,10 @@ int my_ls_basic(const char *dir_name)
         perror("opendir");
         return 84;
     }
-    display_directory_entries(dir);
+    display_dir_entries(dir, show_hidden, show_dir);
     if (closedir(dir) == -1) {
         perror("closedir");
-        return EXIT_FAILURE;
+        return 84;
     }
     return 0;
 }
