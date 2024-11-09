@@ -8,23 +8,11 @@
     #define MY_LS_H
     #include "my.h"
 
-typedef struct {
-    int show_all;       // -a
-// add the others flags here
-
-} ls_options_t;
-
-// custom functions prototype
+// custom functions prototype for my_ls
 int my_ls_basic(const char *dir_name, int show_hidden, int show_dir);
 int display_entry(const struct dirent *entry, int show_hidden, int show_dir);
 void display_dir_entries(DIR *dir, int show_hidden, int show_dir);
 void handle_a_flag(int *show_hidden);
 void handle_d_flag(int *show_dir);
 int is_dir(const char *path);
-
-
-
-
-
-
 #endif /* MY_LS_H */
