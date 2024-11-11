@@ -13,7 +13,6 @@
     #include <string.h>
     #include <errno.h>
     #include <unistd.h>
-
 void my_putchar(char c);
 char *my_strstr(char *str, char const *to_find);
 int my_isneg(int nb);

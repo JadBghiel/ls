@@ -6,41 +6,53 @@
 */
 #include "../include/my.h"
 #include "../include/my_ls.h"
+#include "../include/my_flags.h"
 
-int display_entry(const struct dirent *entry, int show_hidden, int show_dir)
+void display_dir_entries_default(DIR *dir)
 {
-    if (show_hidden || entry->d_name[0] != '.') {
-        if (!show_dir || is_dir(entry->d_name)) {
-            return 1;
-        }
-    }
-    return 0;
-}
+    struct dirent *entry;
 
-void display_dir_entries(DIR *dir, int show_hidden, int show_dir)
-{
-    struct dirent *entry = readdir(dir);
-
+    entry = readdir(dir);
     while (entry != NULL) {
-        if (display_entry(entry, show_hidden, show_dir)) {
-            my_putstr(entry->d_name);
-            my_putchar('\n');
+        if (entry->d_name[0] == '.') {
+            entry = readdir(dir);
+            continue;
         }
+        my_putstr(entry->d_name);
+        my_putstr("  ");
         entry = readdir(dir);
     }
+    my_putchar('\n');
 }
 
-int my_ls_basic(const char *dir_name, int show_hidden, int show_dir)
+void call_correct_flag(const char *flags, DIR *dir)
+{
+    void (*handler)(DIR *);
+
+    for (int i = 0; flags[i] != '\0'; i++) {
+        handler = resolve_handler(flags[i]);
+        if (handler != NULL) {
+            handler(dir);
+        } else {
+            my_putstr("Error: Unknown flag\n");
+        }
+    }
+}
+
+int my_ls_basic(const char *dir_name, const char *flags)
 {
     DIR *dir;
-    struct dirent *entry;
 
     dir = opendir(dir_name);
     if (dir == NULL) {
         perror("opendir");
         return 84;
     }
-    display_dir_entries(dir, show_hidden, show_dir);
+    if (flags == NULL || flags[0] == '\0') {
+        display_dir_entries_default(dir);
+    } else {
+        call_correct_flag(flags, dir);
+        }
     if (closedir(dir) == -1) {
         perror("closedir");
         return 84;

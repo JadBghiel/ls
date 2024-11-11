@@ -11,7 +11,12 @@ SRC = ../src/my_ls.c \
 	../src/main.c \
 	../src/my_putchar.c \
 	../src/my_putstr.c \
-	../src/flags.c
+	../src/my_strlen.c \
+	../src/my_strcmp \
+	../src/handle_flags.c \
+	../src/a_flag.c \
+	../src/d_flag.c \
+	../src/r_flag.c
 
 OBJ = $(SRC:.c=.o)
 
