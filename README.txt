@@ -1,15 +1,11 @@
 KNOWN ISSUES:
 - the -r flag shows all file in reverse order (as opposed to just the not hidden files)
-- multiple flags doesnt work sometimes?:
-    the -d and -a skip an extra line
-    more generally, when 2 flags are specified its skips one extra line
-    the -da dont work the same as -and
-    maybe the issue is in the main
-    the -r flag print as if the -a was specified
-- the void display_directory() function in the d_flag file is maybe useless
+- multiple flags doesnt work sometimes?: not sure tho
+    the -d flag doesnt work
 - the main have coding style issue
-- the _a flag doesnt sort the thing alphabetically
+- the -a flag doesnt sort the thing alphabetically
 - used qsort() instead of custom made lexicographical sorting function
+- even the qsort() doesnt do it in th els order NEED A CUSTOME SORTING FUNCTION
 
 
 TODO:

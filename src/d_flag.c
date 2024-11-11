@@ -18,11 +18,6 @@ int is_directory(const char *path)
     return 0;
 }
 
-void display_directory(const char *path)
-{
-    my_putstr(path);
-    my_putchar('\n');
-}
 
 void d_flag(DIR *dir)
 {
