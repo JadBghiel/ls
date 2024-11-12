@@ -11,7 +11,7 @@
 void r_flag(DIR *dir)
 {
     struct dirent *entry;
-    struct dirent *entries[100];
+    struct dirent *entries[ENTRIES_COUNT];
     int count = 0;
 
     count = store_entries(dir, entries);

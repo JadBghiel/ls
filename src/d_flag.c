@@ -18,7 +18,6 @@ int is_directory(const char *path)
     return 0;
 }
 
-
 void d_flag(DIR *dir)
 {
     struct dirent *entry;

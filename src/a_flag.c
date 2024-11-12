@@ -13,7 +13,7 @@ struct dirent **allocate_entries_array(DIR *dir, int *entry_count)
     struct dirent *entry;
     struct dirent **entries;
 
-    entries = malloc(50 * sizeof(struct dirent *));
+    entries = malloc(ENTRIES_COUNT * sizeof(struct dirent *));
     if (entries == NULL) {
         perror("malloc");
         exit(84);

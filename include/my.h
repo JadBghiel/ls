@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** my.h
 ** File description:
-** header file for info_file (my_ls bootstrap)
+** header file for info_file
 */
 #ifndef MY_H
     #define MY_H
@@ -13,6 +13,7 @@
     #include <string.h>
     #include <errno.h>
     #include <unistd.h>
+    #include <time.h>
 void my_putchar(char c);
 char *my_strstr(char *str, char const *to_find);
 int my_isneg(int nb);
