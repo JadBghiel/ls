@@ -40,7 +40,7 @@ void swap_entries(struct dirent **entries, int i, int j);
 void sort_entries_by_time(struct dirent **entries, int entry_count);
 void t_flag(DIR *dir);
 
-void list_directory_recursive(const char *dir_name);
-void r_uppercase_flag(DIR *dir);
+//void list_directory_recursive(const char *dir_name);
+//void r_uppercase_flag(DIR *dir);
 
 #endif /* MY_LS_H */

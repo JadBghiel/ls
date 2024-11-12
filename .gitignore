@@ -2,7 +2,6 @@
 *.out
 *.swp
 temp/
-main.c
 *.a
 settings.json
 .vscode
