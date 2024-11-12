@@ -17,12 +17,16 @@ KNOWN ISSUES:
 qsort still doesnt work as intentded)
 
 
-
 TODO:
 - implement the -R recursive display subdirectories
 - implement the -l use a long display format
 - in the a_flag.c eventually have the 50 be remplaced by somethign else like the actual number en entries
 - some other place needs the thing above i dont remember where, ENTRIES_COUNT
+
+
+TO TEST:
+- test if the this syntax works: ls [-alRdrt] [FILE]
+- test if its possible to pass a list of files/folders as parameters:
 
 
 DONE:
@@ -31,4 +35,3 @@ DONE:
 - implement the -d display only directories
 - implement the -r display with reverse order
 - implement the -t sort by modif dates
-
