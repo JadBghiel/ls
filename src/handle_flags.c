@@ -13,7 +13,7 @@ const void (*flag_handlers[])(DIR *) = {
     d_flag, // -d
     r_flag, // -r
     t_flag, // -t
-//    r_uppercase_flag, // -R
+    r_uppercase_flag, // -R
 //    l_flag  // -l
 };
 
