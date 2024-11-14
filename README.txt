@@ -8,9 +8,10 @@ KNOWN ISSUES:
 - multiple flags doesnt work sometimes?: not sure tho
 
 - the -a flag doesnt sort the thing alphabetically
-- the -d flag doesnt work alone
+- the -d flag doesnt work alone without any file specification
 - the -r flag works as -r and -a are called (fix: need to skip the hidden files)
 - same for the -t flag
+- the -t flag and the -r flag show hidden files which is not suppose to happen
 
 
 - used qsort() instead of custom made lexicographical sorting function (the

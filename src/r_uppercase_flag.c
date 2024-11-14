@@ -8,58 +8,92 @@
 #include "../include/my_ls.h"
 #include "../include/my_flags.h"
 
-void list_directory_recursive(const char *dir_name)
+void build_path(const char *parent, const char *name, char *result)
 {
-    DIR *dir = opendir(dir_name);
-    struct dirent *entry;
+    int i = 0;
+    int j = 0;
 
+    while (parent[i] != '\0') {
+        result[i] = parent[i];
+        i = i + 1;
+    }
+    result[i] = '/';
+    i = i + 1;
+    while (name[j] != '\0') {
+        result[i] = name[j];
+        i = i + 1;
+        j = j + 1;
+    }
+    result[i] = '\0';
+}
+
+void format_directory_name(const char *dir_name, char *result)
+{
+    int i = 0;
+    int j = 0;
+
+    result[0] = '.';
+    result[1] = '/';
+    i = strlen(dir_name) - 1;
+    while (i >= 0 && dir_name[i] != '/') {
+        i--;
+    }
+    i++;
+    j = 2;
+    while (dir_name[i] != '\0') {
+        result[j] = dir_name[i];
+        i++;
+        j++;
+    }
+    result[j] = '\0';
+}
+
+void list_subdirectories(const char *dir_name)
+{
+    DIR *dir;
+    struct dirent *entry;
+    char new_path[ENTRIES_COUNT];
+
+    dir = opendir(dir_name);
     if (dir == NULL) {
         perror("opendir");
         return;
     }
     entry = readdir(dir);
     while (entry != NULL) {
-        if (entry->d_name[0] == '.') {
-            continue;
+        if (entry->d_name[0] != '.' && is_directory(entry->d_name)) {
+            my_putchar('\n');
+            build_path(dir_name, entry->d_name, new_path);
+            list_directory_recursive(new_path);
         }
-        my_putstr(entry->d_name);
-        if (is_directory(entry->d_name)) {
-            my_putstr(entry->d_name);
-            list_directory_recursive(entry->d_name);
-        }
+        entry = readdir(dir);
     }
     closedir(dir);
 }
 
-void display_recursive(DIR *dir)
+void list_directory_recursive(const char *dir_name)
 {
-    struct dirent *entry;
+    DIR *dir;
+    char formatted_dir[ENTRIES_COUNT];
 
-    my_putstr(entry->d_name);
-        if (is_directory(entry->d_name)) {
-            my_putstr("./");
-            my_putstr(entry->d_name);
-            my_putchar(':');
-            my_putchar('\n');
-            list_directory_recursive(entry->d_name);
-            my_putstr("  ");
-        }
+    dir = opendir(dir_name);
+    if (dir == NULL) {
+        perror("opendir");
+        return;
+    }
+    if (strcmp(dir_name, ".") == 0) {
+        my_putstr(".:\n");
+    } else {
+        format_directory_name(dir_name, formatted_dir);
+        my_putstr(formatted_dir);
+        my_putstr(":\n");
+    }
+    display_dir_entries_default(dir);
+    list_subdirectories(dir_name);
+    closedir(dir);
 }
 
 void r_uppercase_flag(DIR *dir)
 {
-    struct dirent *entry;
-    char current_dir[ENTRIES_COUNT];
-
-    getcwd(current_dir, sizeof(current_dir));
-    entry = readdir(dir);
-    while (entry != NULL) {
-        if (entry->d_name[0] == '.') {
-            entry++;
-            continue;
-        }
-        display_recursive(dir);
-    }
-    my_putchar('\n');
+    list_directory_recursive(".");
 }
-
