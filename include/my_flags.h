@@ -9,6 +9,13 @@
     #include "my.h"
     #include "my_ls.h"
 
-extern const void (*flag_handlers[])(DIR *);
+const void (*flag_handlers[])(DIR *) = {
+    a_flag, // -a
+    d_flag, // -d
+    r_flag, // -r
+    t_flag, // -t
+    r_uppercase_flag, // -R
+//    l_flag  // -l
+};
 
 #endif /* MY_FLAGS_H */

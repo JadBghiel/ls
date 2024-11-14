@@ -34,7 +34,7 @@ void format_directory_name(const char *dir_name, char *result)
 
     result[0] = '.';
     result[1] = '/';
-    i = strlen(dir_name) - 1;
+    i = my_strlen(dir_name) - 1;
     while (i >= 0 && dir_name[i] != '/') {
         i--;
     }
@@ -81,7 +81,7 @@ void list_directory_recursive(const char *dir_name)
         perror("opendir");
         return;
     }
-    if (strcmp(dir_name, ".") == 0) {
+    if (my_strcmp(dir_name, ".") == 0) {
         my_putstr(".:\n");
     } else {
         format_directory_name(dir_name, formatted_dir);
