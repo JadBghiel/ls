@@ -8,20 +8,46 @@
 #include "../include/my_ls.h"
 #include "../include/my_flags.h"
 
+void parse_flags(int argc, char **argv, char *flags)
+{
+    for (int i = 1; i < argc; i++) {
+        if (argv[i][0] == '-') {
+            get_flag_letters(argc, argv, flags);
+        }
+    }
+}
+
+void parse_dir(int argc, char **argv, char *directories[], int *dir_count)
+{
+    const char *default_dir = ".";
+
+    for (int i = 1; i < argc; i++) {
+        if (argv[i][0] != '-') {
+            directories[*dir_count] = argv[i];
+            (*dir_count)++;
+        }
+    }
+    if (*dir_count == 0) {
+        directories[0] = (char *)default_dir;
+        *dir_count = 1;
+    }
+}
+
+void process_directories(int dir_count, char *directories[], char *flags)
+{
+    for (int i = 0; i < dir_count; i++) {
+        my_ls_basic(directories[i], flags);
+    }
+}
+
 int main(int argc, char **argv)
 {
-    const char *dir_name = ".";
     char flags[7] = {0};
+    int dir_count = 0;
+    char *directories[argc];
 
-    if (argc == 1) {
-        my_putstr("no flags passed so displaying current dir:\n");
-        my_ls_basic(dir_name, NULL);
-    } else {
-        get_flag_letters(argc, argv, flags);
-        my_putstr("flags passed:");
-        my_putstr(flags);
-        my_putchar('\n');
-        my_ls_basic(dir_name, flags);
-    }
+    parse_flags(argc, argv, flags);
+    parse_dir(argc, argv, directories, &dir_count);
+    process_directories(dir_count, directories, flags);
     return 0;
 }

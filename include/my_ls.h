@@ -10,6 +10,7 @@
     #define ENTRIES_COUNT 100
     // need a way to define the entries count TODO
 
+
 // custom functions prototype for my_ls
 int my_ls_basic(const char *dir_name, const char *flags);
 void call_correct_flag(const char *flags, DIR *dir);
@@ -35,9 +36,10 @@ int store_entries(DIR *dir, struct dirent *entries[]);
 void reverse_entries(struct dirent *entries[], int count);
 
 int compare_time(time_t time1, time_t time2);
-int should_swap_entries(struct stat *s1, struct stat *s2);
 void swap_entries(struct dirent **entries, int i, int j);
+int compare_and_swap(struct dirent **entries, int j);
 void sort_entries_by_time(struct dirent **entries, int entry_count);
+struct dirent **allocate_entries_array_basic(DIR *dir, int *entry_count);
 void t_flag(DIR *dir);
 
 void list_directory_recursive(const char *dir_name);

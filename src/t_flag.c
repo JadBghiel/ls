@@ -59,7 +59,7 @@ void sort_entries_by_time(struct dirent **entries, int entry_count)
 void t_flag(DIR *dir)
 {
     int entry_count = 0;
-    struct dirent **entries = allocate_entries_array(dir, &entry_count);
+    struct dirent **entries = allocate_entries_array_basic(dir, &entry_count);
 
     if (entries == NULL) {
         return;

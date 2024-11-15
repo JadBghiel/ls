@@ -8,7 +8,14 @@
 #include "../include/my_ls.h"
 #include "../include/my_flags.h"
 
-
+const void (*flag_handlers[])(DIR *) = {
+    a_flag, // -a
+    d_flag, // -d
+    r_flag, // -r
+    t_flag, // -t
+    r_uppercase_flag, // -R
+//    l_flag  // -l
+};
 
 int is_flag_argument(const char *arg)
 {

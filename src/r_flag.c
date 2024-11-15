@@ -25,8 +25,10 @@ int store_entries(DIR *dir, struct dirent *entries[])
 
     entry = readdir(dir);
     while (entry != NULL) {
-        entries[count] = entry;
-        count++;
+        if (entry->d_name[0] != '.') {
+            entries[count] = entry;
+            count++;
+        }
         entry = readdir(dir);
     }
     return count;
