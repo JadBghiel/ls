@@ -18,7 +18,7 @@ SRC = src/my_ls.c \
 	src/d_flag.c \
 	src/r_flag.c \
 	src/t_flag.c \
-	src/allocate_entries.c \
+	src/handle_entries.c \
 	src/r_uppercase_flag.c
 
 OBJ = $(SRC:.c=.o)

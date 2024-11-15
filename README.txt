@@ -6,18 +6,10 @@ with the 84 error code (0 if there is no error).
 
 KNOWN ISSUES:
 - with multiple flags sometimes an extra line is skipped
-- regular my_ls doesnt show in the right order
-- ./my_ls -a -r include/ have the dots at the begining instead of at the end (alphabetical issue with -a)
-- ./my_ls -r -a include/ doesnt show hidden files 
-
-
-
-
+- ./my_ls -d show dir instead a dot when no file/folder is specified
 //- multiple flags doesnt work sometimes?: not sure tho
-//- the -a flag doesnt sort the thing alphabetically (this issue affect -r)
-//- the -d flag doesnt work alone without any file specification
-//- the flag_handler array is not suppose to be in a src file, but when i put it in
-//the header it compile properly 
+//- bad practice: the flag_handler array is not suppose to be in a src file, but when i put it in
+// the header it doesnt compile properly 
 
 
 

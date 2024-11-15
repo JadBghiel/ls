@@ -10,17 +10,22 @@
 
 void display_dir_entries_default(DIR *dir)
 {
+    struct dirent *entries[ENTRIES_COUNT];
     struct dirent *entry;
+    int count = 0;
 
     entry = readdir(dir);
     while (entry != NULL) {
-        if (entry->d_name[0] == '.') {
-            entry = readdir(dir);
-            continue;
+        if (entry->d_name[0] != '.') {
+        entries[count] = entry;
+        count++;
         }
-        my_putstr(entry->d_name);
+    entry = readdir(dir);
+    }
+    sort_entries_alphabetically(entries, count);
+        for (int i = 0; i < count; i++) {
+        my_putstr(entries[i]->d_name);
         my_putstr("  ");
-        entry = readdir(dir);
     }
     my_putchar('\n');
 }
