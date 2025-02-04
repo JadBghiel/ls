@@ -4,7 +4,7 @@
 ** File description:
 ** counts and returns the amount of char in a string
 */
-#include "../include/my.h"
+#include "../../include/my.h"
 
 int my_strlen(char const *str)
 {

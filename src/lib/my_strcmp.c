@@ -4,7 +4,7 @@
 ** File description:
 ** compares two strings
 */
-#include "../include/my.h"
+#include "../../include/my.h"
 
 int my_tolower(int c)
 {

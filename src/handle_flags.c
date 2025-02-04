@@ -4,9 +4,8 @@
 ** File description:
 ** handles the different flags for my_ls
 */
-#include "../include/my.h"
 #include "../include/my_ls.h"
-#include "../include/my_flags.h"
+
 
 const void (*flag_handlers[])(DIR *) = {
     a_flag, // -a

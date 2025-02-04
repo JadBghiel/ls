@@ -7,7 +7,6 @@
 #ifndef MY_FLAGS_H
     #define MY_FLAGS_H
     #include "my.h"
-    #include "my_ls.h"
 
 extern void (*flag_handlers[])(DIR *);
 

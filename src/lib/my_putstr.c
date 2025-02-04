@@ -4,7 +4,7 @@
 ** File description:
 ** displays the chars of a string one by one
 */
-#include "../include/my.h"
+#include "../../include/my.h"
 
 int my_putstr(char const *str)
 {

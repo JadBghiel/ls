@@ -4,9 +4,7 @@
 ** File description:
 ** handles the -t flag
 */
-#include "../include/my.h"
-#include "../include/my_ls.h"
-#include "../include/my_flags.h"
+#include "../../include/my_ls.h"
 
 int compare_time(time_t time1, time_t time2)
 {

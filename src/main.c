@@ -4,9 +4,7 @@
 ** File description:
 ** main file for my_ls project
 */
-#include "../include/my.h"
 #include "../include/my_ls.h"
-#include "../include/my_flags.h"
 
 void parse_flags(int argc, char **argv, char *flags)
 {

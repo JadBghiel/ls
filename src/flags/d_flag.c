@@ -4,9 +4,7 @@
 ** File description:
 ** handles the -d flag
 */
-#include "../include/my.h"
-#include "../include/my_ls.h"
-#include "../include/my_flags.h"
+#include "../../include/my_ls.h"
 
 int is_directory(const char *path)
 {

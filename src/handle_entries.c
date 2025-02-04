@@ -4,9 +4,7 @@
 ** File description:
 ** allocate entries and skip hidden files (used in -t flag)
 */
-#include "../include/my.h"
 #include "../include/my_ls.h"
-#include "../include/my_flags.h"
 
 struct dirent **allocate_entries_array_basic(DIR *dir, int *entry_count)
 {

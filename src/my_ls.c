@@ -4,9 +4,7 @@
 ** File description:
 ** recreate the ls command
 */
-#include "../include/my.h"
 #include "../include/my_ls.h"
-#include "../include/my_flags.h"
 
 void display_dir_entries_default(DIR *dir)
 {

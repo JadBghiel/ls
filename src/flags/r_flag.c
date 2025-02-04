@@ -4,9 +4,7 @@
 ** File description:
 ** handles the -r flag
 */
-#include "../include/my.h"
-#include "../include/my_ls.h"
-#include "../include/my_flags.h"
+#include "../../include/my_ls.h"
 
 void r_flag(DIR *dir)
 {

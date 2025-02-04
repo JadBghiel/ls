@@ -4,9 +4,7 @@
 ** File description:
 ** handles the -R flag
 */
-#include "../include/my.h"
-#include "../include/my_ls.h"
-#include "../include/my_flags.h"
+#include "../../include/my_ls.h"
 
 void build_path(const char *parent, const char *name, char *result)
 {

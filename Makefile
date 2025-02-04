@@ -9,17 +9,17 @@ CC = gcc
 
 SRC = src/my_ls.c \
 	src/main.c \
-	src/my_putchar.c \
-	src/my_putstr.c \
-	src/my_strlen.c \
-	src/my_strcmp.c \
+	src/lib/my_putchar.c \
+	src/lib/my_putstr.c \
+	src/lib/my_strlen.c \
+	src/lib/my_strcmp.c \
 	src/handle_flags.c \
-	src/a_flag.c \
-	src/d_flag.c \
-	src/r_flag.c \
-	src/t_flag.c \
+	src/flags/a_flag.c \
+	src/flags/d_flag.c \
+	src/flags/r_flag.c \
+	src/flags/t_flag.c \
 	src/handle_entries.c \
-	src/r_uppercase_flag.c
+	src/flags/r_uppercase_flag.c
 
 OBJ = $(SRC:.c=.o)
 
