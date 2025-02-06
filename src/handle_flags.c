@@ -7,7 +7,7 @@
 #include "../include/my_ls.h"
 
 
-const void (*flag_handlers[])(DIR *) = {
+void (*const flag_handlers[])(DIR *) = {
     a_flag, // -a
     d_flag, // -d
     r_flag, // -r

@@ -7,7 +7,6 @@
 #ifndef MY_LS_H
     #define MY_LS_H
     #include "my.h"
-    #include "my_flags.h"
     #define ENTRIES_COUNT 100
     // need a way to define the entries count TODO
 
