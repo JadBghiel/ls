@@ -1,0 +1,7 @@
+*.log
+*.out
+*.swp
+temp/
+*.a
+settings.json
+.vscode
