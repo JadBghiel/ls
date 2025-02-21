@@ -1,4 +1,4 @@
-# MY_LS COMMAND
+# LS COMMAND
 
 Recreate the `ls` command in the linux terminal
 
